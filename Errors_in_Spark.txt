@@ -1,0 +1,35 @@
+Error :-Exception in thread "main" org.apache.spark.sql.AnalysisException: Since Spark 2.3, the queries from raw JSON/CSV files are disallowed when the
+referenced columns only include the internal corrupt record column
+(named _corrupt_record by default). For example:
+spark.read.schema(schema).json(file).filter($"_corrupt_record".isNotNull).count()
+and spark.read.schema(schema).json(file).select("_corrupt_record").show().
+Instead, you can cache or save the parsed results and then send the same query.
+For example, val df = spark.read.schema(schema).json(file).cache() and then
+df.filter($"_corrupt_record".isNotNull).count().;
+This is due to ur json file is multiline 
+
+Answer
+Use multiline =true in the file
+spark.read
+  .option("multiLine", true).option("mode", "PERMISSIVE")
+  .json("/path/to/user.json")
+
+Hadoop Installation Error:-
+c:\hadoop-2.7.3\bin>hadoop fs -ls /
+ls: Call From jabin-PC/192.168.0.101 to localhost:9000 failed on connection
+ption: java.net.ConnectException: Connection refused: no further information
+r more details see:  http://wiki.apache.org/hadoop/ConnectionRefused
+
+
+2:
+
+Could not find or load main class M - hadoop windows
+
+=> open  /etc/hadoop/hadoop-env.cmd file and change 
+
+set HADOOP_IDENT_STRING=%USERNAME%
+set HADOOP_IDENT_STRING=myuser
+
+
+Always remember Hadoop 3 will work with hive 3 
+not hadoop2 willwork with hive 3 

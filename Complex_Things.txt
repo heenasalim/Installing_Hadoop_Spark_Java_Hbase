@@ -1,0 +1,64 @@
+  var smith_idrp_vend_pack_combined_data = sc.textFile("C:\\Users\\jabin\\Desktop\\SMITH_IDRP_VEND_PACK_COMBINED_LOCATION.txt")
+   .map(line => line.split(","))
+   
+   I cannot split pipe delimitedfile here
+   workaroud:- processed the "," separated file it worked.
+   permanent fix :-
+   
+   
+   ===================================================================================================
+   
+    var splitting = smith_idrp_vend_pack_combined_data.map(line => line.split(",",-1))
+   var filtered_vend_packs = splitting
+   .filter( a => !a(93).trim.contains('U'))
+   
+   
+    Here we need  to use index 93 a(93) for accecssing ksn_purchase_id column 
+	we cannot directly refer ksn_purchase_id we need to calculate index each time .
+	
+	In this case, we have to provide  schema to file which is possible by only converting rdd to dataframe and 
+	we can provide schema by following two ways:-
+	
+	1:Inferschema -StructFields
+	2:case classess
+	
+	Case classes are more benificial as they are cheapest and StructFields are exepensive. 
+	======================================================================================================
+	
+	Why we use sparksession for creating sqlContext and sometime we create sqlcontext through sparkcontext
+	
+	1> We can create sqlcontext by following 3 steps
+	
+	
+	import org.apache.spark.SparkContext;
+	import org.apache.spark.SparkConf;
+	import org.apache.spark.sql.SQLContext
+	var conf = new SparkConf().setMaster("local").setAppName("Pig_Converiion_to_Spark_Core")
+    var sc = new SparkContext(conf)
+	var sqlcontext =  new SQLContext(sc);
+	val dfs = sqlcontext.read.json("employee.json")
+	
+   2>By using sparksession we can create sparkcontext and sqlcontext directly no need of multiple imports
+   also method defferes for eading files from sqlcontext
+   
+   import org.apache.spark.sql.SparkSession
+   val sparksession = SparkSession.builder().appName("Case Operations").master("local").getOrCreate()
+   import sparksession.implicits._
+   val textfiledataframe = sparksession.sparkContext.textFile("C:\\Users\\jabin\\Desktop\\delimited_files\\student_portal.txt").map( x=>x.split(",")).map(s =>
+   student_portal( s(0).toInt,s(1).toInt,s(2).toInt)).toDF()
+   
+   
+   
+   ==========================================================================================================
+   
+   selectExpr and select is used to query on columns
+   "" contains query for only one column 
+   "","","",""
+   
+   var store_stat = smith_idrp_eligible_loc_data.selectExpr("cast(loc as Int) LOCN_NBR" , "trim(loc_ste_cd) as M_L_ST_CD", "loc_fmt_typ_cd")
+.filter($"loc"  <= 9999).selectExpr("cast(LOCN_NBR as String)" , " M_L_ST_CD", "loc_fmt_typ_cd")
+
+ 
+   
+   
+   

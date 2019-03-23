@@ -1,0 +1,23 @@
+hadoop on windows 7
+
+Download http://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz
+Download JDK8
+Extract the file after 15 min break,
+then place extracted file in C location.
+Then Open
+https://github.com/MuhammadBilalYar/Hadoop-On-Window/wiki/Step-by-step-Hadoop-2.8.0-installation-on-Window-10
+
+===========================================================================================================================
+
+hadoop on windows 7 using ssh
+https://hadoop.apache.org/docs/r2.7.3/hadoop-project-dist/hadoop-common/SingleCluster.html
+https://ittutorials.net/microsoft/windows-10/enable-ssh-windows-10-command-prompt/
+
+Hadoop on uban2
+https://www.digitalocean.com/community/tutorials/how-to-install-hadoop-in-stand-alone-mode-on-ubuntu-16-04
+
+
+Cluster insatllation
+cloudera
+installon windows
+install AWS cluster

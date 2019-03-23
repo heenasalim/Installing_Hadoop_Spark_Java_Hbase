@@ -1,0 +1,56 @@
+Errors:- ArrayIndexOutOfBound
+1> File could have extra spaces
+2> File could have lines with string and int data types should be one of Int or String
+3> File could have less fields and we are accessing max index
+
+*not found when ,col and otherwise functions:-
+need to import org.apache.spark.sql.functions._
+
+Always check split should have '' single quotes not an ""
+
+2> if field not found error came/cannot resolve column 
+cannot resolve '`KSN_DTCOM_ORDER_IND`' given input columns: [a.REV_DTC_NUM, a.REV_CUR_CAP, a.REV_TOTPLANS, SARM_NBR, a.REV_CUR_FACE, a.REV_CUR_FILL, a.KSN_NBR, a.REV_DTCE_NUM, a.REV_CUR_PRES, a.REV_REC_LUDTE, a.loc_fmt_typ_cd, PURCH_STAT_CD, a.REV_REC_CRDTE, a.REV_DEPT, SBT_LAUNCH_ID, a.REV_CATG, VEND_PACK_NBR, KSN_DOTCOM_ORDER_IND, a.ITEM_ID, KSN_PURCH_STAT_CD, a.REV_CHKOUT, a.REV_STORE, a.REV_ST_CD]; line 1 pos 0;
+
+Check spelling of the column
+1> the split immidiate above steps data and print individually, you will get actual error
+2> see if fieldS have same name in case classes/schema file and which we are reffering 
+
+
+
+*3>Ambiguous reference to column ksn_id,ksn_id
+ksn_id might be dulicate in immidiate above step ,
+check that  with printSchema and join above by alias and rename ksn_id to other column their only.
+then refer new column name in  last step
+
+
+Exception in thread "main" org.apache.spark.sql.AnalysisException: Detected implicit cartesian product for INNER join between logical plans
+Project [ksn_id#135 AS KSN_NBR#1559, vendor_package_id#111, purchase_status_cd#152, service_area_restriction_model_id#180, ksn_purchase_status_cd#216, dotcom_allocation_ind#217, REV_STORE#345, REV_REC_CRDTE#354, REV_REC_LUDTE#355, REV_DTC_NUM#346, REV_DTCE_NUM#347, REV_TOTPLANS#348, REV_CUR_FACE#349, REV_CUR_PRES#350, REV_CUR_FILL#351, REV_CUR_CAP#352, REV_CHKOUT#353, REV_DEPT#441, REV_CATG#442, REV_ST_CD#648, loc_fmt_typ_cd#573, ITEM_ID#495]
+
+set following in driver program 
+ val sparkconf = new SparkConf().setAppName("Test")
+ sparkconf.set("spark.sql.crossJoin.enabled", "true")
+  //var sparksession = SparkSession.builder().appName("The SparkSession").master("local")
+   val sparksession = SparkSession.builder().config(sparkconf).getOrCreate()
+   import sparksession.implicits._
+   import sparksession.implicits.StringToColumn
+   
+   
+   ShuffleBlockFetcherIterator: Getting 0 non-empty blocks including 0 local blocks and 0 remote blocks 19/03/21 20:39:15 INFO ShuffleBlockFetcherIterator in spark
+   Infinite loop error
+   => sparksession.conf.set("spark.sql.shuffle.partitions", 10)
+   
+   
+   
+   
+   org.osgi.framework.BundleException: Exception in org.eclipse.core.resources.ResourcesPlugin.start() of bundle org.eclipse.core.resources.
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:800)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:729)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:933)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:309)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:581)
+	at org.eclipse.osgi.container.Module.start(Module.java:449)
+	
+	
+delete .metadata/.plugins/org.eclipse.core.resources/.snap
+ Alternatively, delete the the whole <workspace-directory>\.metadata directory from your workspace and restart.
+ This will reset your workspace and delete all your existing projects in it.
