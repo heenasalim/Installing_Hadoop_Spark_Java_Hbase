@@ -1,0 +1,16 @@
+Exception in thread "main" org.apache.spark.sql.catalyst.parser.ParseException: 
+mismatched input 'import_ind' expecting <EOF>(line 5, pos 10
+case when else statement has not given end clause
+or field is not separated by ,
+or + is attachd to "
+important
+last fild should not have ,
+missing \n
+
+//match where clause conditions for answers
+//  MISSING ) ERROR ,actually there was extra ) 
+
+
+mismatched input '(' expecting <EOF>(line 56, pos 24)
+, is missing
+    
