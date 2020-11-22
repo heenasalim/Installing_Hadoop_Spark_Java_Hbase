@@ -1,0 +1,29 @@
+
+Warning:scalac: Cannot connect to compile server at localhost/127.0.0.1:3200
+Trying to compile without it
+
+
+Edit file ~/.IntelliJIdea2017.3/config/options/scala.xml and add two options: COMPILE_SERVER_PORT and COMPILE_SERVER_MAXIMUM_HEAP_SIZE
+
+Your file need to look like that content bellow:
+
+<application>
+  <component name="ScalaSettings">
+    <option name="COMPILE_SERVER_PORT" value="43558" />
+    <option name="COMPILE_SERVER_ID" value="xxxxxxx-xxxxx-xxxxxx-xxxxxxxxxx" />
+    <option name="COMPILE_SERVER_SDK" value="1.8" />
+    <option name="COMPILE_SERVER_MAXIMUM_HEAP_SIZE" value="2048" />
+  </component>
+  
+  
+  edit Configuration:-
+  
+
+  vmoptions:-  -Xmx 1024 m''
+  
+  
+  Error:Module 'sparksql_fun' production: java.lang.reflect.InvocationTargetException
+  Change the version
+  
+  
+  

@@ -1,0 +1,53 @@
+Need jdk8,jre8
+Set environmental variables 
+
+http://scala-ide.org/blog/scala-installations.html
+
+How to create first Scala IDE project:-
+
+
+How to install maven for scala IDE
+http://scala-ide.org/docs/tutorials/m2eclipse/
+http://leifengblog.net/blog/set-up-scala-development-environment-for-apache-spark-in-standalone-mode/
+Insatll software => http://download.eclipse.org/technology/m2e/releases
+https://stackoverflow.com/questions/8620127/maven-in-eclipse-step-by-step-installation
+
+
+
+E47Updates - http://download.eclipse.org/technology/m2e/releases  done did not get output
+
+
+
+C:\ProgramData\Oracle\Java\javapath;C:\ODAC\app\product\11.2.0\client_1;C:\ODAC\app\product\11.2.0\client_1\bin;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%systemroot%\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Symantec\VIP Access Client\;C:\Program Files\Dell\Dell Data Protection\Encryption\;%systemroot%\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\PuTTY\;C:\Program Files (x86)\Git\cmd;C:\Program Files\Dell\Dell Data Protection\Encryption\;%systemroot%\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\PuTTY\;C:\Program Files (x86)\Git\cmd;C:\Users\hshaik0\Desktop\eclipse\maven\apache-maven-3.6.3\bin;C:\Program Files (x86)\Java\jdk1.7.0_21\bin
+
+
+SBT 'untitled2' project refresh failed
+Error:Error while importing SBT project:<br/>...<br/><pre>:: org.scala-sbt#sbt;0.13.18: not found
+
+::::::::::::::::::::::::::::::::::::::::::::::
+
+
+:::: ERRORS
+Server access Error: Received fatal alert: protocol_version url=https://repo1.maven.org/maven2/org/scala-sbt/sbt/0.13.18/sbt-0.13.18.pom
+
+Server access Error: Received fatal alert: protocol_version url=https://repo1.maven.org/maven2/org/scala-sbt/sbt/0.13.18/sbt-0.13.18.jar
+
+Server access Error: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target url=https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt/0.13.18/ivys/ivy.xml
+
+Server access Error: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target url=https://repo.scala-sbt.org/scalasbt/ivy-snapshots/org.scala-sbt/sbt/0.13.18/ivys/ivy.xml
+
+
+:: USE VERBOSE OR DEBUG MESSAGE LEVEL FOR MORE DETAILS
+unresolved dependency: org.scala-sbt#sbt;0.13.18: not found
+Error during sbt execution: Error retrieving required libraries
+(see C:\Users\hshaik0\.sbt\boot\update.log for complete log)
+Error: Could not retrieve sbt 0.13.18</pre><br/>See complete log in <a href="file:/C:/Users/hshaik0/.IdeaIC2017.1/system/log/sbt.last.log">file:/C:/Users/hshaik0/.IdeaIC2017.1/system/log/sbt.last.log</a>
+
+
+
+https://www.scala-sbt.org/download.html
+
+
+
+
+-Xmx1024M
